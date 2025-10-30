@@ -22,7 +22,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  position: relative; /* allows dropdown placement */
+  position: relative;
 }
 
 .topnav .brand {
@@ -62,7 +62,7 @@ h2 {
   }
 
   .topnav .links {
-    display: none; /* hidden until toggled */
+    display: none;
     position: absolute;
     right: 0;
     top: 100%;
@@ -180,4 +180,24 @@ hr {
   border-radius: 6px;
   background: #fff;
   cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
+}
+
+footer a {
+  color: #384959;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #88BDF2;
 }
