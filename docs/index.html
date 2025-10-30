@@ -6,25 +6,35 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <h1>Keystage.ai Design Mockups</h1>
-  <p>Public preview of UI images stored in <code>docs/design/</code>.</p>
 
-  <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About</a>
+<body>
+  <nav class="topnav">
+    <a class="brand" href="index.html">Keystage.ai</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul id="nav-links" class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
   </nav>
   <hr>
+
+  <h1>Keystage.ai Design Mockups</h1>
+  <p>Public preview of UI images stored in <code>docs/design/</code>.</p>
 
   <h2>KS1</h2>
   <div class="container">
     <div class="card">
-      <img src="design/ks1/home.png" alt="KS1 Home">
+      <a class="lb" href="design/ks1/home.png">
+        <img src="design/ks1/home.png" alt="KS1 Home">
+      </a>
       <p>KS1 Home</p>
       <a class="button" href="design/ks1/home.png" target="_blank">View</a>
     </div>
+
     <div class="card">
-      <img src="design/ks1/subjects.png" alt="KS1 Subjects">
+      <a class="lb" href="design/ks1/subjects.png">
+        <img src="design/ks1/subjects.png" alt="KS1 Subjects">
+      </a>
       <p>KS1 Subjects</p>
       <a class="button" href="design/ks1/subjects.png" target="_blank">View</a>
     </div>
@@ -33,15 +43,28 @@
   <h2>KS2–KS5</h2>
   <div class="container">
     <div class="card">
-      <img src="design/ks2-ks5/home.png" alt="KS2–KS5 Home">
+      <a class="lb" href="design/ks2-ks5/home.png">
+        <img src="design/ks2-ks5/home.png" alt="KS2–KS5 Home">
+      </a>
       <p>KS2–KS5 Home</p>
       <a class="button" href="design/ks2-ks5/home.png" target="_blank">View</a>
     </div>
+
     <div class="card">
-      <img src="design/ks2-ks5/lesson.png" alt="KS2–KS5 Lesson">
+      <a class="lb" href="design/ks2-ks5/lesson.png">
+        <img src="design/ks2-ks5/lesson.png" alt="KS2–KS5 Lesson">
+      </a>
       <p>KS2–KS5 Lesson</p>
       <a class="button" href="design/ks2-ks5/lesson.png" target="_blank">View</a>
     </div>
   </div>
+
+  <!-- Lightbox overlay -->
+  <div id="lightbox" class="lightbox" hidden>
+    <img id="lightbox-img" alt="">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">×</button>
+  </div>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
