@@ -1,4 +1,4 @@
-/* Base */
+/* ---------- Base ---------- */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ffffff;
@@ -16,18 +16,21 @@ h2 {
   color: #000000;
 }
 
-/* Navigation */
+/* ---------- Navigation ---------- */
 .topnav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  position: relative; /* allows dropdown placement */
 }
+
 .topnav .brand {
   font-weight: bold;
   color: #384959;
   text-decoration: none;
 }
+
 .topnav .links {
   list-style: none;
   display: flex;
@@ -35,37 +38,63 @@ h2 {
   margin: 0;
   padding: 0;
 }
+
 .topnav .links a {
   text-decoration: none;
   color: #384959;
   font-weight: bold;
 }
+
 .menu-toggle {
   display: none;
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 6px;
   background: #fff;
+  line-height: 1;
+  cursor: pointer;
 }
 
-/* Mobile navigation */
+/* ---------- Mobile Navigation ---------- */
 @media (max-width: 700px) {
   .menu-toggle {
     display: inline-block;
   }
+
   .topnav .links {
-    display: none;
+    display: none; /* hidden until toggled */
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 200px;
     flex-direction: column;
     background: #fff;
-    border: 1px solid #eee;
-    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
   }
+
   .topnav .links.open {
     display: flex;
   }
+
+  .topnav .links li {
+    margin: 0;
+  }
+
+  .topnav .links a {
+    padding: 10px 12px;
+    display: block;
+  }
 }
 
-/* Layout */
+hr {
+  margin: 10px 0 20px;
+}
+
+/* ---------- Layout ---------- */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -96,7 +125,7 @@ h2 {
   border-radius: 8px;
 }
 
-/* Buttons */
+/* ---------- Buttons ---------- */
 .button {
   display: inline-block;
   background-color: #88BDF2;
@@ -112,14 +141,14 @@ h2 {
   background-color: #384959;
 }
 
-/* Responsive cards */
+/* ---------- Responsive Cards ---------- */
 @media (max-width: 600px) {
   .card {
     width: 90%;
   }
 }
 
-/* Lightbox */
+/* ---------- Lightbox ---------- */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -129,14 +158,17 @@ h2 {
   justify-content: center;
   z-index: 9999;
 }
+
 .lightbox[hidden] {
   display: none;
 }
+
 .lightbox img {
   max-width: 90vw;
   max-height: 85vh;
   border-radius: 8px;
 }
+
 .lightbox-close {
   position: fixed;
   top: 12px;
