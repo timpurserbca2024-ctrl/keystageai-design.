@@ -1,10 +1,17 @@
 /* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   margin: 40px;
-  transition: background-color 0.3s, color 0.3s;
+}
+
+/* smooth theme transitions (after first paint only) */
+body.theme-ready {
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Light (default) and dark variables */
@@ -18,7 +25,7 @@ body {
   --button-hover: #384959;
   --footer-bg: #f4f4f4;
 }
-body.dark {
+.dark {
   --bg: #0D1117;
   --text: #e6e6e6;
   --card-bg: #161B22;
