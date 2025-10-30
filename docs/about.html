@@ -8,10 +8,12 @@
 </head>
 
 <body>
-  <!-- Navigation -->
   <nav class="topnav">
     <a class="brand" href="index.html">Keystage.ai</a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <div>
+      <button class="theme-toggle" id="theme-toggle">🌞</button>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    </div>
     <ul id="nav-links" class="links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
@@ -19,42 +21,12 @@
   </nav>
   <hr>
 
-  <!-- Content -->
   <h1>About Keystage.ai</h1>
-  <p>This page explains what you’re previewing and how the files are organised.</p>
+  <p>This site demonstrates static design previews, responsive layout, and theme switching between light and dark modes.</p>
 
-  <h2>What this site shows</h2>
-  <ul>
-    <li>Public UI mockups for KS1 and KS2–KS5.</li>
-    <li>Lightbox on image click and “View” button for original PNG.</li>
-    <li>Responsive dropdown navigation and consistent footer.</li>
-  </ul>
+  <h2>How to switch themes</h2>
+  <p>Click the sun/moon icon at the top right. The choice is saved locally so it persists between visits.</p>
 
-  <h2>Folder structure (published)</h2>
-  <pre>
-docs/
- ├─ index.html
- ├─ about.html
- ├─ css/style.css
- ├─ js/main.js
- └─ design/
-     ├─ ks1/
-     └─ ks2-ks5/
-  </pre>
-
-  <h2>How to add a new mockup</h2>
-  <ol>
-    <li>Upload an image into <code>docs/design/ks1/</code> or <code>docs/design/ks2-ks5/</code>.</li>
-    <li>Add a new <code>.card</code> block to <code>docs/index.html</code> for that image.</li>
-  </ol>
-
-  <!-- Lightbox overlay -->
-  <div id="lightbox" class="lightbox" hidden>
-    <img id="lightbox-img" alt="">
-    <button id="lightbox-close" class="lightbox-close" aria-label="Close">×</button>
-  </div>
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 Keystage.ai | <a href="index.html">Home</a> | <a href="mailto:info@keystage.ai">Contact</a></p>
   </footer>
