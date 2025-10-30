@@ -39,3 +39,37 @@ nav a {
 nav a:hover {
   color: #88BDF2;
 }
+
+/* Layout container */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Card style for each image block */
+.card {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* Make images scale nicely inside cards */
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Responsive behaviour */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}
