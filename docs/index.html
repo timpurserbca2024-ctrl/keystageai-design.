@@ -1,77 +1,44 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Keystage.ai Designs</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-</head>
+document.addEventListener('DOMContentLoaded', () => {
+  // ----- Mobile menu -----
+  const btn = document.querySelector('.menu-toggle');
+  const links = document.getElementById('nav-links');
+  if (btn && links) {
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 
-<body>
-  <!-- Navigation -->
-  <nav class="topnav">
-    <a class="brand" href="index.html">Keystage.ai</a>
-    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
-    <ul id="nav-links" class="links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-  </nav>
-  <hr>
+  // ----- Lightbox -----
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbClose = document.getElementById('lightbox-close');
+  document.querySelectorAll('a.lb').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const url = a.getAttribute('href');
+      if (!url) return;
+      lbImg.src = url;
+      lb.removeAttribute('hidden');
+    });
+  });
+  const closeLB = () => lb.setAttribute('hidden', '');
+  if (lbClose) lbClose.addEventListener('click', closeLB);
+  if (lb) lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
 
-  <!-- Page Content -->
-  <h1>Keystage.ai Design Mockups</h1>
-  <p>Public preview of UI images stored in <code>docs/design/</code>.</p>
-
-  <h2>KS1</h2>
-  <div class="container">
-    <div class="card">
-      <a class="lb" href="design/ks1/home.png">
-        <img src="design/ks1/home.png" alt="KS1 Home">
-      </a>
-      <p>KS1 Home</p>
-      <a class="button" href="design/ks1/home.png" target="_blank">View</a>
-    </div>
-
-    <div class="card">
-      <a class="lb" href="design/ks1/subjects.png">
-        <img src="design/ks1/subjects.png" alt="KS1 Subjects">
-      </a>
-      <p>KS1 Subjects</p>
-      <a class="button" href="design/ks1/subjects.png" target="_blank">View</a>
-    </div>
-  </div>
-
-  <h2>KS2–KS5</h2>
-  <div class="container">
-    <div class="card">
-      <a class="lb" href="design/ks2-ks5/home.png">
-        <img src="design/ks2-ks5/home.png" alt="KS2–KS5 Home">
-      </a>
-      <p>KS2–KS5 Home</p>
-      <a class="button" href="design/ks2-ks5/home.png" target="_blank">View</a>
-    </div>
-
-    <div class="card">
-      <a class="lb" href="design/ks2-ks5/lesson.png">
-        <img src="design/ks2-ks5/lesson.png" alt="KS2–KS5 Lesson">
-      </a>
-      <p>KS2–KS5 Lesson</p>
-      <a class="button" href="design/ks2-ks5/lesson.png" target="_blank">View</a>
-    </div>
-  </div>
-
-  <!-- Lightbox overlay -->
-  <div id="lightbox" class="lightbox" hidden>
-    <img id="lightbox-img" alt="">
-    <button id="lightbox-close" class="lightbox-close" aria-label="Close">×</button>
-  </div>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Keystage.ai | <a href="about.html">About</a> | <a href="mailto:info@keystage.ai">Contact</a></p>
-  </footer>
-
-  <script src="js/main.js" defer></script>
-</body>
-</html>
+  // ----- Theme toggle -----
+  const themeBtn = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.body.classList.add('dark');
+    if (themeBtn) themeBtn.textContent = '🌙';
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const dark = document.body.classList.toggle('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      themeBtn.textContent = dark ? '🌙' : '🌞';
+    });
+  }
+});
