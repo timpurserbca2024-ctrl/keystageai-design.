@@ -28,3 +28,14 @@ img {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+nav a {
+  color: #384959;
+  text-decoration: none;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #88BDF2;
+}
