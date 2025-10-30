@@ -1,3 +1,4 @@
+/* Base */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ffffff;
@@ -15,32 +16,56 @@ h2 {
   color: #000000;
 }
 
-.grid {
+/* Navigation */
+.topnav {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
-
-img {
-  max-width: 320px;
-  height: auto;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-nav a {
+.topnav .brand {
+  font-weight: bold;
   color: #384959;
   text-decoration: none;
-  margin-right: 10px;
+}
+.topnav .links {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+.topnav .links a {
+  text-decoration: none;
+  color: #384959;
   font-weight: bold;
 }
-
-nav a:hover {
-  color: #88BDF2;
+.menu-toggle {
+  display: none;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
 }
 
-/* Layout container */
+/* Mobile navigation */
+@media (max-width: 700px) {
+  .menu-toggle {
+    display: inline-block;
+  }
+  .topnav .links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 8px;
+  }
+  .topnav .links.open {
+    display: flex;
+  }
+}
+
+/* Layout */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -49,35 +74,26 @@ nav a:hover {
   margin-top: 20px;
 }
 
-/* Card style for each image block */
 .card {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 300px;
   padding: 15px;
   text-align: center;
-}
-
-/* Make images scale nicely inside cards */
-.card img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
   transform: scale(1.03);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive behaviour */
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 /* Buttons */
@@ -94,4 +110,42 @@ nav a:hover {
 
 .button:hover {
   background-color: #384959;
+}
+
+/* Responsive cards */
+@media (max-width: 600px) {
+  .card {
+    width: 90%;
+  }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.lightbox[hidden] {
+  display: none;
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+}
+.lightbox-close {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  font-size: 28px;
+  line-height: 1;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
 }
