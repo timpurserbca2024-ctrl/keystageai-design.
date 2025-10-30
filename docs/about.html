@@ -3,11 +3,57 @@
 <head>
   <meta charset="utf-8">
   <title>About – Keystage.ai</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+  <!-- Navigation -->
+  <nav class="topnav">
+    <a class="brand" href="index.html">Keystage.ai</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul id="nav-links" class="links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <hr>
+
+  <!-- Content -->
   <h1>About Keystage.ai</h1>
-  <p>This section explains what the project is and how the designs evolve.</p>
-  <p><a href="index.html">← Back to home</a></p>
+  <p>This page explains what you’re previewing and how the files are organised.</p>
+
+  <h2>What this site shows</h2>
+  <ul>
+    <li>Public UI mockups for KS1 and KS2–KS5.</li>
+    <li>Lightbox on image click, “View” button to open original PNG.</li>
+    <li>Mobile menu with a simple dropdown.</li>
+  </ul>
+
+  <h2>Folder structure (published)</h2>
+  <pre>
+docs/
+ ├─ index.html
+ ├─ about.html
+ ├─ css/style.css
+ ├─ js/main.js
+ └─ design/
+     ├─ ks1/
+     └─ ks2-ks5/
+  </pre>
+
+  <h2>How to add a new mockup</h2>
+  <ol>
+    <li>Upload the image into <code>docs/design/ks1/</code> or <code>docs/design/ks2-ks5/</code>.</li>
+    <li>Add a new <code>.card</code> block in <code>docs/index.html</code> pointing to that file.</li>
+  </ol>
+
+  <!-- Lightbox overlay (shared markup; harmless if unused on this page) -->
+  <div id="lightbox" class="lightbox" hidden>
+    <img id="lightbox-img" alt="">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">×</button>
+  </div>
+
+  <script src="js/main.js" defer></script>
 </body>
 </html>
