@@ -1,3 +1,12 @@
+// Apply saved or system theme before paint
+(function () {
+  const saved = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefersDark)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // ----- Mobile menu -----
   const btn = document.querySelector('.menu-toggle');
@@ -13,32 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightbox-img');
   const lbClose = document.getElementById('lightbox-close');
-  document.querySelectorAll('a.lb').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const url = a.getAttribute('href');
-      if (!url) return;
-      lbImg.src = url;
-      lb.removeAttribute('hidden');
+  if (lb && lbImg && lbClose) {
+    document.querySelectorAll('a.lb').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        lbImg.src = a.href;
+        lb.removeAttribute('hidden');
+      });
     });
-  });
-  const closeLB = () => lb.setAttribute('hidden', '');
-  if (lbClose) lbClose.addEventListener('click', closeLB);
-  if (lb) lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+    const close = () => lb.setAttribute('hidden', '');
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
 
   // ----- Theme toggle -----
   const themeBtn = document.getElementById('theme-toggle');
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') {
-    document.body.classList.add('dark');
-    if (themeBtn) themeBtn.textContent = '🌙';
-  }
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const dark = document.body.classList.toggle('dark');
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
-      themeBtn.textContent = dark ? '🌙' : '🌞';
-    });
-  }
+  const setIcon = dark => themeBtn.textContent = dark ? '🌙' : '🌞';
+  const darkNow = document.documentElement.classList.contains('dark');
+  setIcon(darkNow);
+
+  themeBtn.addEventListener('click', () => {
+    const dark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    setIcon(dark);
+  });
+
+  // enable CSS transitions after paint
+  setTimeout(() => document.body.classList.add('theme-ready'), 50);
 });
